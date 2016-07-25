@@ -22,9 +22,28 @@ class TimerViewController: UIViewController, SetTimerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startTimer()
 
-        
+        //add gesture recognizers for relevant interactions
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(TimerViewController.tapTimer(_:)))
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(TimerViewController.longPressTimer(_:)))
+        self.view.addGestureRecognizer(tapRecognizer)
+        self.view.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    @IBAction func unwindToTimer(segue: UIStoryboardSegue) {
+    }
+    
+    func tapTimer(gestureRecognizer: UIGestureRecognizer) {
+        if timer.valid {
+            pauseTimer()
+        }
+        else {
+            startTimer()
+        }
+    }
+    
+    func longPressTimer(gestureRecognizer: UIGestureRecognizer) {
+        performSegueWithIdentifier("setTimerSegue", sender: self)
     }
     
     func tickTock(timer: NSTimer) {
@@ -37,7 +56,13 @@ class TimerViewController: UIViewController, SetTimerDelegate {
     }
     
     func startTimer() {
-        timer.invalidate()
+        if countdownTime <= 0 {
+            stopTimer()
+            return
+        }
+        if timer.valid {
+            timer.invalidate()
+        }
         timeLabel.text = formattedCountdownTime
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0,
                                                        target: self,
@@ -47,32 +72,20 @@ class TimerViewController: UIViewController, SetTimerDelegate {
     }
     
     func timerWasChanged(newTime: NSTimeInterval) {
-        self.dismissViewControllerAnimated(true) { 
-            if(newTime == 0) {
-                self.stopTimer()
-                return
-            }
+        self.dismissViewControllerAnimated(true) {
             self.countdownTime = newTime
             self.startTimer()
         }
     }
 
-    @IBAction func stopTimer() {
+    func stopTimer() {
         timer.invalidate()
         countdownTime = 0.0
         timeLabel.text = formattedCountdownTime
     }
     
-    @IBAction func pauseTimer() {
-        //TODO
+    func pauseTimer() {
         timer.invalidate()
-    }
-    
-    @IBAction func resumeTimer() {
-        //TODO new timer etc. -> startTimer
-    }
-    
-    @IBAction func unwindToTimer(segue: UIStoryboardSegue) {
     }
     
     private func stringFromTimeInterval(interval: NSTimeInterval) -> String {

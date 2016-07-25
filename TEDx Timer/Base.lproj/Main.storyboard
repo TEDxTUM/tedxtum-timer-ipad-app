@@ -20,23 +20,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JaP-HE-hFe">
-                                <rect key="frame" x="15" y="28" width="565" height="564"/>
+                                <rect key="frame" x="20" y="95" width="560" height="350"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="300"/>
                                 <color key="textColor" red="0.82626616379310358" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="100" verticalCompressionResistancePriority="100" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-eA-siI">
+                                <rect key="frame" x="180" y="465" width="240" height="105"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.82626616379999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JaP-HE-hFe" secondAttribute="bottom" constant="8" id="MO7-OM-xf9"/>
-                            <constraint firstItem="JaP-HE-hFe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="P2K-qn-7wl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="JaP-HE-hFe" secondAttribute="trailing" id="SyY-nf-chf"/>
-                            <constraint firstItem="JaP-HE-hFe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-5" id="lzf-2I-B5R"/>
+                            <constraint firstItem="JaP-HE-hFe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="4jx-m2-Cfl"/>
+                            <constraint firstItem="yzz-eA-siI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JaP-HE-hFe" secondAttribute="bottom" constant="20" id="OqH-X0-e3L"/>
+                            <constraint firstItem="yzz-eA-siI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="a00-zn-Yhn"/>
+                            <constraint firstItem="JaP-HE-hFe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.9" id="dBA-ae-wR0"/>
+                            <constraint firstItem="yzz-eA-siI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k86-8d-Di4"/>
+                            <constraint firstItem="yzz-eA-siI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="pOD-fQ-VdD"/>
+                            <constraint firstItem="yzz-eA-siI" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="pvB-d9-nrL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yzz-eA-siI" secondAttribute="bottom" priority="900" constant="30" id="qIi-6N-OPY"/>
+                            <constraint firstItem="JaP-HE-hFe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="smX-4I-VcD"/>
+                            <constraint firstItem="JaP-HE-hFe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zJt-9B-9zc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4jx-m2-Cfl"/>
+                                <exclude reference="a00-zn-Yhn"/>
+                                <exclude reference="pvB-d9-nrL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="timeLabel" destination="JaP-HE-hFe" id="lIi-Ip-wy5"/>
+                        <segue destination="K7M-8b-pzJ" kind="presentation" identifier="setTimerSegue" modalPresentationStyle="formSheet" id="DWL-fe-0dS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,7 +85,7 @@
                                     <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C51-nh-kSI">
                                         <rect key="frame" x="153" y="0.0" width="255" height="240"/>
                                     </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="keg-Da-gWD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="keg-Da-gWD">
                                         <rect key="frame" x="433" y="0.0" width="127" height="240"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -145,5 +163,8 @@
             <point key="canvasLocation" x="1019" y="344"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="2990" height="620"/>
+    </resources>
     <color key="tintColor" red="0.82626616379999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
