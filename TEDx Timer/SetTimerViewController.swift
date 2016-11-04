@@ -29,7 +29,7 @@ class SetTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerData = [createStringArray(0, toNumber: 99), createStringArray(0, toNumber: 59)]
         
         //scroll to TED time in pickerView
-        pickerView.selectRow(15, inComponent: 0, animated: true)
+        pickerView.selectRow(18, inComponent: 0, animated: true)
     }
     
     fileprivate func createStringArray(_ fromNumber:Int, toNumber:Int) -> [String] {
