@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController, SetTimerDelegate {
+class TimerViewController: UIViewController {
     
     @IBOutlet weak var timeLabel: UILabel!
     var timer = Timer()
@@ -43,11 +43,11 @@ class TimerViewController: UIViewController, SetTimerDelegate {
     }
     
     func longPressTimer(_ gestureRecognizer: UIGestureRecognizer) {
-        performSegue(withIdentifier: "setTimerSegue", sender: self)
+        stopTimer()
     }
     
     func tickTock(_ timer: Timer) {
-        countdownTime -= 1
+        countdownTime += 1
         timeLabel.text = formattedCountdownTime
         if countdownTime == 0 {
             timer.invalidate()
@@ -56,10 +56,6 @@ class TimerViewController: UIViewController, SetTimerDelegate {
     }
     
     func startTimer() {
-        if countdownTime <= 0 {
-            stopTimer()
-            return
-        }
         if timer.isValid {
             timer.invalidate()
         }
@@ -69,13 +65,6 @@ class TimerViewController: UIViewController, SetTimerDelegate {
                                                        selector: #selector(TimerViewController.tickTock(_:)),
                                                        userInfo: "nil",
                                                        repeats: true)
-    }
-    
-    func timerWasChanged(_ newTime: TimeInterval) {
-        self.dismiss(animated: true) {
-            self.countdownTime = newTime
-            self.startTimer()
-        }
     }
 
     func stopTimer() {
@@ -96,11 +85,5 @@ class TimerViewController: UIViewController, SetTimerDelegate {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "setTimerSegue" {
-            let viewController = segue.destination as! SetTimerViewController
-            viewController.delegate = self
-        }
-    }
 }
 

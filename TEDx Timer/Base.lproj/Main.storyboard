@@ -58,113 +58,11 @@
                     </view>
                     <connections>
                         <outlet property="timeLabel" destination="JaP-HE-hFe" id="lIi-Ip-wy5"/>
-                        <segue destination="K7M-8b-pzJ" kind="presentation" identifier="setTimerSegue" modalPresentationStyle="formSheet" id="DWL-fe-0dS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="280" y="337"/>
-        </scene>
-        <!--Set Timer View Controller-->
-        <scene sceneID="Amk-DT-Wqi">
-            <objects>
-                <viewController id="K7M-8b-pzJ" customClass="SetTimerViewController" customModule="TEDx_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tsN-Z3-pUd"/>
-                        <viewControllerLayoutGuide type="bottom" id="WoH-bZ-Bjb"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mfc-3a-bRZ">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="SuI-ab-CDt">
-                                <rect key="frame" x="20" y="186" width="500" height="248"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="wjb-eE-zrm">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="248"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C51-nh-kSI">
-                                        <rect key="frame" x="138" y="0.0" width="224.5" height="248"/>
-                                    </pickerView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="keg-Da-gWD">
-                                        <rect key="frame" x="387.5" y="0.0" width="112.5" height="248"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="wjb-eE-zrm" firstAttribute="width" secondItem="C51-nh-kSI" secondAttribute="width" multiplier="0.5" id="Mpg-Ec-EyF"/>
-                                    <constraint firstItem="wjb-eE-zrm" firstAttribute="width" secondItem="keg-Da-gWD" secondAttribute="width" id="nlY-a3-Fs7"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="ONi-r8-GUN">
-                                <rect key="frame" x="157.5" y="449" width="225" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPD-D3-jKo">
-                                        <rect key="frame" x="0.0" y="0.0" width="62.5" height="30"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <segue destination="BIs-a2-cTH" kind="unwind" unwindAction="unwindToTimer:" id="Y38-dK-BGD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6B-Q9-jLd">
-                                        <rect key="frame" x="162.5" y="0.0" width="62.5" height="30"/>
-                                        <state key="normal" title="Start"/>
-                                        <connections>
-                                            <action selector="setTimer" destination="K7M-8b-pzJ" eventType="touchUpInside" id="gOX-sl-6UP"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="qPD-D3-jKo" firstAttribute="width" secondItem="f6B-Q9-jLd" secondAttribute="width" id="rHL-Y3-FsV"/>
-                                </constraints>
-                            </stackView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0u-Vn-LAX">
-                                <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.82626616379999995" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="New Timer" id="OHB-eZ-pk8"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.82626616379999995" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ONi-r8-GUN" secondAttribute="trailing" id="2XG-0U-yTJ"/>
-                            <constraint firstItem="ONi-r8-GUN" firstAttribute="leading" secondItem="Mfc-3a-bRZ" secondAttribute="leadingMargin" id="6it-cN-vVC"/>
-                            <constraint firstItem="SuI-ab-CDt" firstAttribute="leading" secondItem="Mfc-3a-bRZ" secondAttribute="leadingMargin" id="Bnw-kq-Q64"/>
-                            <constraint firstItem="ONi-r8-GUN" firstAttribute="width" secondItem="C51-nh-kSI" secondAttribute="width" id="FAO-Zx-T8j"/>
-                            <constraint firstItem="C0u-Vn-LAX" firstAttribute="top" secondItem="tsN-Z3-pUd" secondAttribute="bottom" id="LAv-hI-IUW"/>
-                            <constraint firstItem="SuI-ab-CDt" firstAttribute="height" secondItem="Mfc-3a-bRZ" secondAttribute="height" multiplier="0.4" id="RyR-4w-hWj"/>
-                            <constraint firstItem="ONi-r8-GUN" firstAttribute="top" secondItem="SuI-ab-CDt" secondAttribute="bottom" constant="15" id="SNF-MO-UgG"/>
-                            <constraint firstAttribute="trailing" secondItem="C0u-Vn-LAX" secondAttribute="trailing" id="Y7L-Qf-Xos"/>
-                            <constraint firstItem="SuI-ab-CDt" firstAttribute="centerX" secondItem="Mfc-3a-bRZ" secondAttribute="centerX" id="fbe-nu-GO9"/>
-                            <constraint firstItem="C0u-Vn-LAX" firstAttribute="leading" secondItem="Mfc-3a-bRZ" secondAttribute="leading" id="lop-xZ-Aa5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SuI-ab-CDt" secondAttribute="trailing" id="msL-dx-gHo"/>
-                            <constraint firstItem="ONi-r8-GUN" firstAttribute="centerX" secondItem="Mfc-3a-bRZ" secondAttribute="centerX" id="ns4-vw-c3n"/>
-                            <constraint firstItem="SuI-ab-CDt" firstAttribute="centerY" secondItem="Mfc-3a-bRZ" secondAttribute="centerY" id="wdB-UG-q3l"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2XG-0U-yTJ"/>
-                                <exclude reference="6it-cN-vVC"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="pickerView" destination="C51-nh-kSI" id="e8M-KM-3Ba"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Rna-CZ-OhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="BIs-a2-cTH" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1019" y="344"/>
         </scene>
     </scenes>
     <resources>
