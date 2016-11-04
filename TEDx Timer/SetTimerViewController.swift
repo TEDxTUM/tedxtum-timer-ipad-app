@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SetTimerDelegate {
-    func timerWasChanged(newTime: NSTimeInterval)
+    func timerWasChanged(_ newTime: TimeInterval)
 }
 
 class SetTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -32,7 +32,7 @@ class SetTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerView.selectRow(15, inComponent: 0, animated: true)
     }
     
-    private func createStringArray(fromNumber:Int, toNumber:Int) -> [String] {
+    fileprivate func createStringArray(_ fromNumber:Int, toNumber:Int) -> [String] {
         var array = [String]()
         if fromNumber <= toNumber {
             for index in fromNumber...toNumber {
@@ -47,21 +47,21 @@ class SetTimerViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         delegate?.timerWasChanged(newTime)
     }
     
-    private func convertPickerTimetoInterval() -> NSTimeInterval {
-        let minutes = (pickerData[0][pickerView.selectedRowInComponent(0)] as NSString).doubleValue
-        let seconds = (pickerData[1][pickerView.selectedRowInComponent(1)] as NSString).doubleValue
+    fileprivate func convertPickerTimetoInterval() -> TimeInterval {
+        let minutes = (pickerData[0][pickerView.selectedRow(inComponent: 0)] as NSString).doubleValue
+        let seconds = (pickerData[1][pickerView.selectedRow(inComponent: 1)] as NSString).doubleValue
         return minutes * 60.0 + seconds
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData[component].count
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[component][row]
     }
 
