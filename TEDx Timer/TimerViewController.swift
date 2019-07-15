@@ -33,7 +33,7 @@ class TimerViewController: UIViewController {
     @IBAction func unwindToTimer(_ segue: UIStoryboardSegue) {
     }
     
-    func tapTimer(_ gestureRecognizer: UIGestureRecognizer) {
+    @objc func tapTimer(_ gestureRecognizer: UIGestureRecognizer) {
         if timer.isValid {
             pauseTimer()
         }
@@ -42,11 +42,11 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func longPressTimer(_ gestureRecognizer: UIGestureRecognizer) {
+    @objc func longPressTimer(_ gestureRecognizer: UIGestureRecognizer) {
         stopTimer()
     }
     
-    func tickTock(_ timer: Timer) {
+    @objc func tickTock(_ timer: Timer) {
         countdownTime += 1
         timeLabel.text = formattedCountdownTime
         if countdownTime == 0 {
